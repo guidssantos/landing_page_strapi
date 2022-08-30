@@ -25,7 +25,9 @@ function Home() {
       const slug = pathName ? pathName : 'landing-page';
 
       try {
-        const data = await fetch(``);
+        const data = await fetch(
+          `https://back-end-landing.herokuapp.com/api/pages/?filters[slug]=${slug}&populate=deep`,
+        );
         const json = await data.json();
         const { attributes } = json.data[0];
         const pageData = mapData([attributes]);
